@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Mahasiswa - Zaky Aksa Kafa Billah</title>
+
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --merah: #b71c1c;
+            --merah-gelap: #7f0000;
+            --merah-muda: #fff1f1;
+            --biru: #1976d2;
+            --abu: #f5f5f5;
+            --teks: #212121;
+        }
+
+        body {
+            background-color: var(--abu);
+            color: var(--teks);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar-custom {
+            background: linear-gradient(135deg, var(--merah-gelap), var(--merah));
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand span {
+            color: #90caf9;
+        }
+
+        .nav-link {
+            color: white !important;
+            margin-left: 10px;
+        }
+
+        .nav-link:hover {
+            color: #90caf9 !important;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(127, 0, 0, 0.92), rgba(183, 28, 28, 0.92));
+            color: white;
+            padding: 70px 0;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .hero-line {
+            width: 80px;
+            height: 5px;
+            background-color: #90caf9;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .profile-card {
+            margin-top: -45px;
+            border: none;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .profile-header {
+            background-color: white;
+            border-left: 6px solid var(--merah);
+            padding: 25px;
+        }
+
+        .profile-title {
+            color: var(--merah);
+            font-weight: bold;
+        }
+
+        .info-label {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .info-value {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .ipk-card {
+            background: linear-gradient(135deg, var(--merah), var(--merah-gelap));
+            color: white;
+            border: none;
+            border-radius: 18px;
+            padding: 30px;
+            height: 100%;
+            box-shadow: 0 8px 20px rgba(183, 28, 28, 0.25);
+        }
+
+        .ipk-number {
+            font-size: 55px;
+            font-weight: 800;
+        }
+
+        .ipk-label {
+            color: #ffcdd2;
+            letter-spacing: 1px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 22px;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 30px;
+            color: var(--biru);
+        }
+
+        .stat-number {
+            font-size: 27px;
+            font-weight: bold;
+            color: var(--merah);
+        }
+
+        .section-title {
+            color: var(--merah);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-line {
+            width: 55px;
+            height: 4px;
+            background-color: var(--biru);
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .table-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .table thead {
+            background-color: var(--merah);
+            color: white;
+        }
+
+        .table thead th {
+            border: none;
+            padding: 15px 10px;
+        }
+
+        .table tbody td {
+            vertical-align: middle;
+        }
+
+        .table tbody tr:hover {
+            background-color: var(--merah-muda);
+        }
+
+        .badge-a {
+            background-color: #1565c0;
+        }
+
+        .badge-ab {
+            background-color: var(--merah);
+        }
+
+        .badge-b {
+            background-color: #555;
+        }
+
+        footer {
+            margin-top: 70px;
+            background-color: #5d0000;
+            color: white;
+            padding: 30px 0;
+        }
+
+        footer span {
+            color: #90caf9;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 0;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .profile-card {
+                margin-top: -30px;
+            }
+
+            .ipk-number {
+                font-size: 45px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <span>●</span> Profil Mahasiswa
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuNavbar">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#profil">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="#nilai">Nilai</a></li>
+                <li class="nav-item"><a class="nav-link" href="#ipk">IPK</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <p class="mb-2">DATA AKADEMIK MAHASISWA</p>
+                <h1>Profil Mahasiswa</h1>
+                <div class="hero-line"></div>
+                <p class="mb-0">
+                    Informasi identitas dan riwayat nilai akademik mahasiswa dalam satu halaman.
+                </p>
+            </div>
+
+            <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                <div class="fs-1">🎓</div>
+                <p class="mb-0">Semester 3</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="container">
+
+    <section id="profil">
+        <div class="card profile-card">
+            <div class="profile-header">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="profile-title">Zaky Aksa Kafa Billah</h2>
+                        <p class="text-secondary mb-4">Mahasiswa Sistem dan Teknologi Informasi</p>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="info-label">NIM</div>
+                                <div class="info-value">148250059</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="info-label">Program Studi</div>
+                                <div class="info-value">Sistem dan Teknologi Informasi</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="info-label">Fakultas</div>
+                                <div class="info-value">Fakultas Teknologi Elektro dan Informatika Cerdas</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="info-label">Semester</div>
+                                <div class="info-value">Semester 3</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="ipk-card text-center">
+                            <div class="ipk-label">INDEKS PRESTASI KUMULATIF</div>
+                            <div class="ipk-number">3.53</div>
+                            <p class="mb-0">IPK Mahasiswa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-number">15</div>
+                    <p class="mb-0 text-secondary">Mata Kuliah</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon">🎓</div>
+                    <div class="stat-number">38</div>
+                    <p class="mb-0 text-secondary">Total SKS</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number">3.53</div>
+                    <p class="mb-0 text-secondary">IPK</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nilai" class="mt-5">
+        <h2 class="section-title">Nilai Mata Kuliah</h2>
+        <div class="section-line"></div>
+
+        <div class="table-container">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Kode</th>
+                            <th>Mata Kuliah</th>
+                            <th>Semester</th>
+                            <th>SKS</th>
+                            <th>Nilai</th>
+                            <th>Nilai Mutu</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr><td>1</td><td>14823393</td><td>Interaksi Manusia Komputer</td><td>2</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
+                        <tr><td>2</td><td>14823153</td><td>Teknologi Informasi dan Aplikasi Bisnis Berkembang</td><td>2</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
+                        <tr><td>3</td><td>14823192</td><td>Arsitektur dan Organisasi Komputer</td><td>2</td><td>2</td><td><span class="badge badge-ab">AB</span></td><td>7.00</td></tr>
+                        <tr><td>4</td><td>14823333</td><td>Algoritma dan Struktur Data</td><td>2</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
+                        <tr><td>5</td><td>14823313</td><td>Sistem Basis Data</td><td>2</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
+                        <tr><td>6</td><td>14823372</td><td>Statistika dan Probabilitas</td><td>2</td><td>2</td><td><span class="badge badge-b">B</span></td><td>6.00</td></tr>
+                        <tr><td>7</td><td>14823274</td><td>Pemrograman Berorientasi Objek</td><td>2</td><td>4</td><td><span class="badge badge-a">A</span></td><td>16.00</td></tr>
+                        <tr><td>8</td><td>14823532</td><td>Bahasa Inggris</td><td>1</td><td>2</td><td><span class="badge badge-a">A</span></td><td>8.00</td></tr>
+                        <tr><td>9</td><td>14823012</td><td>Etika Pengembangan Teknologi Siber</td><td>1</td><td>2</td><td><span class="badge badge-a">A</span></td><td>8.00</td></tr>
+                        <tr><td>10</td><td>14823323</td><td>Dasar Pemrograman</td><td>1</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
+                        <tr><td>11</td><td>14823202</td><td>Sistem Operasi</td><td>1</td><td>2</td><td><span class="badge badge-ab">AB</span></td><td>7.00</td></tr>
+                        <tr><td>12</td><td>14823352</td><td>Matematika Diskrit</td><td>1</td><td>2</td><td><span class="badge badge-ab">AB</span></td><td>7.00</td></tr>
+                        <tr><td>13</td><td>14823342</td><td>Aljabar Linier</td><td>1</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
+                        <tr><td>14</td><td>14823103</td><td>Konsep dan Fondasi Sistem Informasi</td><td>1</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
+                        <tr><td>15</td><td>14823362</td><td>Kalkulus</td><td>1</td><td>2</td><td><span class="badge badge-b">B</span></td><td>6.00</td></tr>
+                    </tbody>
+
+                    <tfoot>
+                        <tr class="table-light fw-bold">
+                            <td colspan="4" class="text-end">Jumlah SKS</td>
+                            <td>38</td>
+                            <td colspan="2">-</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="ipk" class="mt-5">
+        <h2 class="section-title">Informasi IPK</h2>
+        <div class="section-line"></div>
+
+        <div class="row g-4">
+            <div class="col-md-7">
+                <div class="table-container">
+                    <h5 class="fw-bold mb-3">Rekapitulasi Akademik</h5>
+
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr><td>Total Mata Kuliah</td><td class="fw-bold">15 Mata Kuliah</td></tr>
+                            <tr><td>Total SKS</td><td class="fw-bold">38 SKS</td></tr>
+                            <tr><td>Total Nilai Mutu</td><td class="fw-bold">134.00</td></tr>
+                            <tr><td>IPK</td><td><span class="badge bg-danger fs-6">3.53</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="ipk-card">
+                    <div class="ipk-label">HASIL AKADEMIK</div>
+                    <h3 class="mt-3">IPK</h3>
+                    <div class="ipk-number">3.53</div>
+                    <p>Berdasarkan total 38 SKS dan total nilai mutu 134.00.</p>
+
+                    <div class="progress mt-4" style="height: 10px;">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 88.25%;"></div>
+                    </div>
+
+                    <small class="d-block mt-2">Skala 4.00</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container text-center">
+        <h5>Profil Mahasiswa</h5>
+        <p class="mb-1">Zaky Aksa Kafa Billah</p>
+        <p class="mb-0">Sistem dan Teknologi Informasi</p>
+        <hr>
+        <small>Dibuat menggunakan <span>Bootstrap 5.3</span></small>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js" defer></script>
+</body>
+</html>
