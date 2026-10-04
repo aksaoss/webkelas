@@ -205,6 +205,40 @@
             color: #90caf9;
         }
 
+
+        /* Elemen interaktif Tugas Individu 2 */
+        .kontrol-data {
+            background-color: white;
+            padding: 20px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-tambah {
+            background-color: #fff8f8;
+            border: 1px solid #f3caca;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .pesan-form {
+            min-height: 24px;
+        }
+
+        .baris-hasil:hover {
+            background-color: var(--merah-muda);
+        }
+
+        .badge-a, .badge-ab, .badge-b {
+            color: white;
+        }
+
+        .status-kosong {
+            color: #777;
+            text-align: center;
+            font-style: italic;
+        }
+
         @media (max-width: 768px) {
             .hero {
                 padding: 50px 0;
@@ -317,7 +351,7 @@
             <div class="col-md-4">
                 <div class="stat-card">
                     <div class="stat-icon">📚</div>
-                    <div class="stat-number">15</div>
+                    <div id="totalMataKuliah" class="stat-number">15</div>
                     <p class="mb-0 text-secondary">Mata Kuliah</p>
                 </div>
             </div>
@@ -325,7 +359,7 @@
             <div class="col-md-4">
                 <div class="stat-card">
                     <div class="stat-icon">🎓</div>
-                    <div class="stat-number">38</div>
+                    <div id="totalSKS" class="stat-number">38</div>
                     <p class="mb-0 text-secondary">Total SKS</p>
                 </div>
             </div>
@@ -333,7 +367,7 @@
             <div class="col-md-4">
                 <div class="stat-card">
                     <div class="stat-icon">⭐</div>
-                    <div class="stat-number">3.53</div>
+                    <div id="nilaiIPK" class="stat-number">3.53</div>
                     <p class="mb-0 text-secondary">IPK</p>
                 </div>
             </div>
@@ -344,7 +378,30 @@
         <h2 class="section-title">Nilai Mata Kuliah</h2>
         <div class="section-line"></div>
 
-        <div class="table-container">
+        <div class="kontrol-data mb-4">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-6">
+                    <label for="inputPencarian" class="form-label fw-bold">Cari Mata Kuliah</label>
+                    <input type="search" id="inputPencarian" class="form-control"
+                           placeholder="Contoh: Basis Data">
+                </div>
+                <div class="col-md-4">
+                    <label for="filterSemester" class="form-label fw-bold">Filter Semester</label>
+                    <select id="filterSemester" class="form-select">
+                        <option value="semua">Semua Semester</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" id="tombolTabel" class="btn btn-danger w-100">
+                        Sembunyikan Tabel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container" id="wadahTabel">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover align-middle">
                     <thead>
@@ -359,33 +416,70 @@
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr><td>1</td><td>14823393</td><td>Interaksi Manusia Komputer</td><td>2</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
-                        <tr><td>2</td><td>14823153</td><td>Teknologi Informasi dan Aplikasi Bisnis Berkembang</td><td>2</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
-                        <tr><td>3</td><td>14823192</td><td>Arsitektur dan Organisasi Komputer</td><td>2</td><td>2</td><td><span class="badge badge-ab">AB</span></td><td>7.00</td></tr>
-                        <tr><td>4</td><td>14823333</td><td>Algoritma dan Struktur Data</td><td>2</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
-                        <tr><td>5</td><td>14823313</td><td>Sistem Basis Data</td><td>2</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
-                        <tr><td>6</td><td>14823372</td><td>Statistika dan Probabilitas</td><td>2</td><td>2</td><td><span class="badge badge-b">B</span></td><td>6.00</td></tr>
-                        <tr><td>7</td><td>14823274</td><td>Pemrograman Berorientasi Objek</td><td>2</td><td>4</td><td><span class="badge badge-a">A</span></td><td>16.00</td></tr>
-                        <tr><td>8</td><td>14823532</td><td>Bahasa Inggris</td><td>1</td><td>2</td><td><span class="badge badge-a">A</span></td><td>8.00</td></tr>
-                        <tr><td>9</td><td>14823012</td><td>Etika Pengembangan Teknologi Siber</td><td>1</td><td>2</td><td><span class="badge badge-a">A</span></td><td>8.00</td></tr>
-                        <tr><td>10</td><td>14823323</td><td>Dasar Pemrograman</td><td>1</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
-                        <tr><td>11</td><td>14823202</td><td>Sistem Operasi</td><td>1</td><td>2</td><td><span class="badge badge-ab">AB</span></td><td>7.00</td></tr>
-                        <tr><td>12</td><td>14823352</td><td>Matematika Diskrit</td><td>1</td><td>2</td><td><span class="badge badge-ab">AB</span></td><td>7.00</td></tr>
-                        <tr><td>13</td><td>14823342</td><td>Aljabar Linier</td><td>1</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
-                        <tr><td>14</td><td>14823103</td><td>Konsep dan Fondasi Sistem Informasi</td><td>1</td><td>3</td><td><span class="badge badge-ab">AB</span></td><td>10.50</td></tr>
-                        <tr><td>15</td><td>14823362</td><td>Kalkulus</td><td>1</td><td>2</td><td><span class="badge badge-b">B</span></td><td>6.00</td></tr>
+                    <tbody id="tabelMataKuliah">
+                        <!-- Data mata kuliah dibuat oleh JavaScript -->
                     </tbody>
 
                     <tfoot>
                         <tr class="table-light fw-bold">
                             <td colspan="4" class="text-end">Jumlah SKS</td>
-                            <td>38</td>
+                            <td id="jumlahSKSTabel">38</td>
                             <td colspan="2">-</td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="button" id="tombolForm" class="btn btn-outline-danger">
+                + Tambah Mata Kuliah
+            </button>
+        </div>
+
+        <div id="wadahForm" class="form-tambah mt-3 d-none">
+            <h5 class="fw-bold">Tambah Data Mata Kuliah</h5>
+            <p class="text-secondary">Isi form berikut. Data baru akan langsung masuk ke tabel.</p>
+
+            <form id="formMataKuliah" novalidate>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label for="kode" class="form-label">Kode</label>
+                        <input type="text" id="kode" class="form-control" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="nama" class="form-label">Nama Mata Kuliah</label>
+                        <input type="text" id="nama" class="form-control" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="semester" class="form-label">Semester</label>
+                        <select id="semester" class="form-select" required>
+                            <option value="">Pilih</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="sks" class="form-label">SKS</label>
+                        <input type="number" id="sks" class="form-control" min="1" max="6" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="nilai" class="form-label">Nilai</label>
+                        <select id="nilai" class="form-select" required>
+                            <option value="">Pilih nilai</option>
+                            <option value="A">A</option>
+                            <option value="AB">AB</option>
+                            <option value="B">B</option>
+                        </select>
+                    </div>
+                    <div class="col-md-9 d-flex align-items-end">
+                        <button type="submit" class="btn btn-danger">Simpan Mata Kuliah</button>
+                    </div>
+                </div>
+                <p id="pesanForm" class="pesan-form mt-3 mb-0 fw-bold"></p>
+            </form>
         </div>
     </section>
 
@@ -400,10 +494,10 @@
 
                     <table class="table table-striped">
                         <tbody>
-                            <tr><td>Total Mata Kuliah</td><td class="fw-bold">15 Mata Kuliah</td></tr>
-                            <tr><td>Total SKS</td><td class="fw-bold">38 SKS</td></tr>
-                            <tr><td>Total Nilai Mutu</td><td class="fw-bold">134.00</td></tr>
-                            <tr><td>IPK</td><td><span class="badge bg-danger fs-6">3.53</span></td></tr>
+                            <tr><td>Total Mata Kuliah</td><td id="rekapMataKuliah" class="fw-bold">15 Mata Kuliah</td></tr>
+                            <tr><td>Total SKS</td><td id="rekapSKS" class="fw-bold">38 SKS</td></tr>
+                            <tr><td>Total Nilai Mutu</td><td id="rekapNilaiMutu" class="fw-bold">134.00</td></tr>
+                            <tr><td>IPK</td><td><span id="rekapIPK" class="badge bg-danger fs-6">3.53</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -413,8 +507,8 @@
                 <div class="ipk-card">
                     <div class="ipk-label">HASIL AKADEMIK</div>
                     <h3 class="mt-3">IPK</h3>
-                    <div class="ipk-number">3.53</div>
-                    <p>Berdasarkan total 38 SKS dan total nilai mutu 134.00.</p>
+                    <div id="ipkBesar" class="ipk-number">3.53</div>
+                    <p id="deskripsiIPK">Berdasarkan total 38 SKS dan total nilai mutu 134.00.</p>
 
                     <div class="progress mt-4" style="height: 10px;">
                         <div class="progress-bar bg-info" role="progressbar" style="width: 88.25%;"></div>
