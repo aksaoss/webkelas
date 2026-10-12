@@ -184,35 +184,37 @@ inputPencarian.addEventListener("input", filterData);
 filterSemester.addEventListener("change", filterData);
 
 // ===============================
-// 7. FITUR TOGGLE TABEL
+// 7. ANIMASI TABEL MENGGUNAKAN jQuery
 // ===============================
-// EventListener #3: menyembunyikan/menampilkan tabel
-tombolTabel.addEventListener("click", () => {
-  wadahTabel.classList.toggle("d-none");
-
-  const tabelDisembunyikan = wadahTabel.classList.contains("d-none");
-
-  if (tabelDisembunyikan) {
-    tombolTabel.textContent = "Tampilkan Tabel";
-    tombolTabel.classList.replace("btn-danger", "btn-primary");
-  } else {
-    tombolTabel.textContent = "Sembunyikan Tabel";
-    tombolTabel.classList.replace("btn-primary", "btn-danger");
-  }
+// slideToggle membuka atau menutup tabel dengan animasi 400 ms.
+$("#tombolTabel").on("click", function () {
+  const sedangTerlihat = $("#wadahTabel").is(":visible");
+  $("#wadahTabel").stop(true, true).slideToggle(400);
+  $(this)
+    .text(sedangTerlihat ? "Tampilkan Tabel" : "Sembunyikan Tabel")
+    .toggleClass("btn-primary", sedangTerlihat)
+    .toggleClass("btn-danger", !sedangTerlihat);
 });
 
 // ===============================
-// 8. TOGGLE FORM TAMBAH DATA
+// 8. ANIMASI FORM MENGGUNAKAN jQuery
 // ===============================
-tombolForm.addEventListener("click", () => {
-  wadahForm.classList.toggle("d-none");
-
-  const formDisembunyikan = wadahForm.classList.contains("d-none");
-
-  tombolForm.textContent = formDisembunyikan
-    ? "+ Tambah Mata Kuliah"
-    : "− Tutup Form";
+$("#tombolForm").on("click", function () {
+  const sedangTerlihat = $("#wadahForm").is(":visible");
+  $("#wadahForm").stop(true, true).slideToggle(400);
+  $(this).text(sedangTerlihat ? "+ Tambah Mata Kuliah" : "− Tutup Form");
 });
+
+// Pesan validasi dan keberhasilan tampil menggunakan efek fade.
+function tampilkanPesanForm(teks, berhasil) {
+  $("#pesanForm")
+    .stop(true, true)
+    .hide()
+    .text(teks)
+    .toggleClass("text-success", berhasil)
+    .toggleClass("text-danger", !berhasil)
+    .fadeIn(300);
+}
 
 // ===============================
 // 9. FORM + VALIDASI + preventDefault()
@@ -260,9 +262,7 @@ formMataKuliah.addEventListener("submit", (event) => {
   }
 
   if (!valid) {
-    pesanForm.textContent = "Mohon lengkapi data dengan benar.";
-    pesanForm.classList.remove("text-success");
-    pesanForm.classList.add("text-danger");
+    tampilkanPesanForm("Mohon lengkapi data dengan benar.", false);
     return;
   }
 
@@ -285,9 +285,7 @@ formMataKuliah.addEventListener("submit", (event) => {
   tampilkanData(daftarMataKuliah);
   perbaruiRingkasan();
 
-  pesanForm.textContent = "Data mata kuliah berhasil ditambahkan!";
-  pesanForm.classList.remove("text-danger");
-  pesanForm.classList.add("text-success");
+  tampilkanPesanForm("Data mata kuliah berhasil ditambahkan!", true);
 
   formMataKuliah.reset();
 });
